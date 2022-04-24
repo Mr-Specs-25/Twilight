@@ -16,6 +16,12 @@ intents.presences = True
 
 TOKEN = os.getenv("TOKEN")
 
+intents = discord.Intents.default()
+intents.members = True
+client = commands.Bot(command_prefix = '>', intents = intents)
+client.remove_command("help")
+client.launch_time = datetime.utcnow()
+
 #========================================================================================================================
 #========================================================================================================================
 
@@ -30,17 +36,10 @@ X_Mark     = ("<:RA_XMark:871079164554387541>")
 #========================================================================================================================
 #========================================================================================================================
 
-intents = discord.Intents.default()
-intents.members = True
-client = commands.Bot(command_prefix = '>', intents = intents)
-client.remove_command("help")
-client.launch_time = datetime.utcnow()
-
 @client.event
 async def on_ready():
     await client.change_presence(activity = discord.Game(name = f">help┃Listening to {len(client.users)} users"))
     print ("Radon\'s Ready!")
-
 
 @client.event
 async def on_command_error(ctx, error):
