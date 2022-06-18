@@ -14,7 +14,7 @@ class Utility(commands.Cog):
 #========================================================================================================================
 
     @commands.Cog.listener()
-    async def on_member_join(member):
+    async def on_member_join(self, member):
         await sleep(60*10)
         for channel in member.guild.channels:
             if channel.name.startswith("〢🎯Members:"):
