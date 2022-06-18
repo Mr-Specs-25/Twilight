@@ -63,8 +63,6 @@ async def massping(ctx, times : int, member: discord.Member = None):
             await ctx.send(member.mention)
 
 
-
-
 #load-extensions
 for filename in os.listdir("./cogs"):
       if filename.endswith(".py"):
