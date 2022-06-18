@@ -15,7 +15,15 @@ class Utility(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        await sleep(60*10)
+        await sleep(60*5)
+        for channel in member.guild.channels:
+            if channel.name.startswith("〢🎯Members:"):
+                await channel.edit(name = f"〢🎯Members: {member.guild.member_count}")
+                break
+
+    @commands.Cog.listener()
+    async def on_member_remove(self, member):
+        await sleep(60*5)
         for channel in member.guild.channels:
             if channel.name.startswith("〢🎯Members:"):
                 await channel.edit(name = f"〢🎯Members: {member.guild.member_count}")
