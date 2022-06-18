@@ -54,9 +54,9 @@ class Events(commands.Cog):
         if message.guild.name == "Twilight Hangout":
           delem = discord.Embed(color = message.author.colour)
           delem.set_author(name = message.author, icon_url = message.author.avatar_url)
-          delem.add_field(name = f"**Message deleted** \nChannel: #{message.channel.name}", value = f"**Content:** \n\t{message.content}")
+          delem.add_field(name = f"**Message deleted** \nChannel: #{message.channel.name}", value = f"\n**Content:** \n\t{message.content}")
           delem.set_footer(text = f"{message.guild} | {message.guild.id}")
-          channel = self.client.get_channel(909912516044398623)
+          channel = self.client.get_channel(839431570401918987)
           await channel.send(embed = delem)
 
     @commands.Cog.listener()
@@ -66,9 +66,9 @@ class Events(commands.Cog):
           if before.content != after.content:
             edem = discord.Embed(color = after.author.colour)
             edem.set_author(name = after.author, icon_url = after.author.avatar_url)
-            edem.add_field(name = f"**Message edited** \nChannel: #{after.channel.name}", value = f"**Before:** {before.content} \n**+After:** {after.content}")
+            edem.add_field(name = f"**Message edited** \nChannel: #{after.channel.name}", value = f"\n**Before:** {before.content} \n**+After:** {after.content}")
             edem.set_footer(text = f"{after.guild} | {after.guild.id}")
-            channel = self.client.get_channel(909912516044398623)
+            channel = self.client.get_channel(839431570401918987)
             await channel.send(embed = edem)
 
 

@@ -8,6 +8,7 @@ class Utility(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+
 #massping
     @commands.command()
     @commands.is_owner()
