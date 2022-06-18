@@ -69,7 +69,7 @@ async def massping(ctx, times : int, member: discord.Member = None):
 client.load_extension("cogs.information")
 client.load_extension("cogs.moderation")
 client.load_extension("cogs.utility")
-client.load_extention("cogs.events")
+client.load_extension("cogs.events")
 client.load_extension("cogs.eval")
 
 
