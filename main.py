@@ -66,12 +66,9 @@ async def massping(ctx, times : int, member: discord.Member = None):
 
 
 #load-extensions
-client.load_extension("cogs.information")
-client.load_extension("cogs.moderation")
-client.load_extension("cogs.utility")
-client.load_extension("cogs.events")
-client.load_extension("cogs.eval")
-
+for filename in os.listdir("./cogs"):
+      if filename.endswith(".py"):
+            client.load_extension(f"cogs.{filename[:-3]}")
 
 client.run(TOKEN)
 
