@@ -38,7 +38,7 @@ X_Mark     = ("<:RA_XMark:871079164554387541>")
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity = discord.Game(name = f">help┃Listening to {len(client.users)} users"))
+    await client.change_presence(activity = discord.Game(name = f"--help┃Roaming around Twilight Hangout!"))
     print ("Radon\'s Ready!")
 
 @client.event
