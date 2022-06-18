@@ -6,11 +6,8 @@ import traceback
 from discord.ext import commands
 from contextlib import redirect_stdout
 
-#========================================================================================================================
-#========================================================================================================================
 
 class Eval(commands.Cog):
-
     def __init__(self, client):
         self.client = client
         self.result = ""
@@ -22,7 +19,7 @@ class Eval(commands.Cog):
 
         return content.strip('` \n')
 
-
+#evaluation
     @commands.command(aliases = ["evaluate", "exe", "execute"], pass_context=True)
     @commands.is_owner()
     async def eval(self, ctx, *, body: str):
@@ -67,11 +64,8 @@ class Eval(commands.Cog):
                 evem = discord.Embed(title = "", description = f'`Result`\n```py\n{value}{ret}\n```')
                 await ctx.send(embed = evem)
 
-#========================================================================================================================
-#========================================================================================================================
 
 def setup(client):
     client.add_cog(Eval(client))
 
-#========================================================================================================================
-#========================================================================================================================
+

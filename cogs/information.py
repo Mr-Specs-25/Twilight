@@ -9,22 +9,18 @@ from discord import __version__ as discord_version
 from psutil import Process, virtual_memory
 from discord.ext.commands.cooldowns import BucketType
 
-#========================================================================================================================
-#========================================================================================================================
 
 class Information(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-#========================================================================================================================
-#========================================================================================================================
 
-    #colours
+#colours
     blue = discord.Color.from_rgb(50, 180, 250)
     green = discord.Color.from_rgb(50, 250, 180)
     red = discord.Color.from_rgb(250, 50, 50)
 
-    #emotes
+#emotes
     Info       = ("<:RA_Stats:871077269387509831>")
     Utility    = ("<:RA_Utility:871077840349720607>")
     Moderation = ("<:RA_BanHammer:871077232020439090>")
@@ -37,15 +33,14 @@ class Information(commands.Cog):
     Idle      =  ("<:RA_Idle:871075755495395338>")
     Offline   =  ("<:RA_Offline:871075785883140166>")
 
-    #-----
+#commands
     Info_cmds = ("user, server, check")
     Utility_cmds = ("")
     Moderation_cmds = ("swipe")
     Fun_cmds = ("")
 
-#========================================================================================================================
-#========================================================================================================================
 
+#help
     @commands.group(invoke_without_command = True, aliases = ["commands"], case_insensitive = True)
     @commands.cooldown(1, 8, commands.BucketType.user)
     async def help(self, ctx):
@@ -59,6 +54,7 @@ class Information(commands.Cog):
         hembed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         await ctx.reply(embed = hembed)
 
+#help-purge
     @help.command(aliases = ["purge"])
     @commands.guild_only()
     @commands.cooldown(1, 8, commands.BucketType.user)
@@ -68,9 +64,8 @@ class Information(commands.Cog):
       shem.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
       await ctx.reply(embed = shem)
 
-#========================================================================================================================
-#========================================================================================================================
 
+#info
     @commands.Cog.listener()
     async def on_ready(self):
         global startTime
@@ -87,9 +82,8 @@ class Information(commands.Cog):
         embed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         await ctx.send(embed = embed)
 
-#========================================================================================================================
-#========================================================================================================================
 
+#user
     @commands.group(invoke_without_command = True, aliases = ["account"], case_insensitive = True)
     @commands.cooldown(1, 8, commands.BucketType.user)
     async def user(self, ctx, member : discord.Member = None):
@@ -106,6 +100,7 @@ class Information(commands.Cog):
         uiembed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         await ctx.reply(embed = uiembed)
 
+#user-avatar
     @user.command(aliases = ["av"])
     @commands.guild_only()
     @commands.cooldown(1, 8, commands.BucketType.user) 
@@ -116,17 +111,16 @@ class Information(commands.Cog):
         aembed.set_image(url = member.avatar_url)
         await ctx.reply(embed = aembed)
 
-#========================================================================================================================
-#========================================================================================================================
 
+#server
     @commands.group(invoke_without_command = True, aliases = ["guild"], case_insensitive = True)
     @commands.cooldown(1, 8, commands.BucketType.user)
     async def server(self, ctx, guild: discord.Guild = None):
-        #guild = ctx.message.guild
-        #statuses = [len(list(filter(lambda m: str(m.status) == 'online', ctx.guild.members))),
-                    #len(list(filter(lambda m: str(m.status) == 'idle', ctx.guild.members))),
-                    #len(list(filter(lambda m: str(m.status) == 'dnd', ctx.guild.members))),
-                    #len(list(filter(lambda m: str(m.status) == 'invisible', ctx.guild.members)))]
+#        guild = ctx.message.guild
+#        statuses = [len(list(filter(lambda m: str(m.status) == 'online', ctx.guild.members))),
+#                    len(list(filter(lambda m: str(m.status) == 'idle', ctx.guild.members))),
+#                    len(list(filter(lambda m: str(m.status) == 'dnd', ctx.guild.members))),
+#                    len(list(filter(lambda m: str(m.status) == 'invisible', ctx.guild.members)))]
         sembed = discord.Embed(title = '', description = '```yaml\nSubCommands: icon```', color = ctx.author.color, timestamp = ctx.message.created_at)
         sembed.set_thumbnail(url = ctx.guild.icon_url)
         sembed.set_author(name = 'Server Information', url = '', icon_url = self.client.user.avatar_url)
@@ -138,6 +132,7 @@ class Information(commands.Cog):
         sembed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         await ctx.reply(embed = sembed)
 
+#server-icon
     @server.command()
     @commands.guild_only()
     @commands.cooldown(1, 8, commands.BucketType.user)
@@ -147,10 +142,8 @@ class Information(commands.Cog):
         aembed.set_image(url = ctx.guild.icon_url)
         await ctx.reply(embed = aembed)
 
-#========================================================================================================================
-#========================================================================================================================
 
-
+#check
     @commands.group(invoke_without_command = True, aliases = ["inspect"], case_insensitive = True)
     async def check(self, ctx):
       chem = discord.Embed(title = "", description = "```SubCommands: invite, emote  \n\nUsage: \n\tinvite: check invite <invite_link> \n\temote: check emote <emote>```", color = ctx.author.color, timestamp = ctx.message.created_at)
@@ -158,7 +151,7 @@ class Information(commands.Cog):
       chem.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
       await ctx.reply(embed = chem, delete_after = 10.0)
 
-
+#check-invite
     @check.command()
     @commands.guild_only()
     @commands.cooldown(1, 8, commands.BucketType.user)
@@ -179,7 +172,7 @@ class Information(commands.Cog):
       invem.set_footer(text = f'Requested by {ctx.author}', icon_url = ctx.author.avatar_url)
       await ctx.send(embed = invem)
 
-
+#check-emote
     @check.command(aliases = ["emoji"])
     @commands.guild_only()
     @commands.cooldown(1, 8, commands.BucketType.user)
@@ -192,8 +185,8 @@ class Information(commands.Cog):
         is_animated = "Yes" if emoji.animated else "No"
         is_animated2 = "a" if emoji.animated else ""
         creation_time = emoji.created_at.strftime("%I:%M %p %B %d, %Y")
-        #is_managed = "Yes" if emoji.managed else "No"
-        #can_use_emoji = ("Everyone" if not emoji.roles else " ".join(role.name for role in emoji.roles))
+#        is_managed = "Yes" if emoji.managed else "No"
+#        can_use_emoji = ("Everyone" if not emoji.roles else " ".join(role.name for role in emoji.roles))
         EmoteName = emoji.name
         EmoteID = emoji.id
         EmoteString = f"<{is_animated2}:{emoji.name}:{emoji.id}>"
@@ -210,21 +203,14 @@ class Information(commands.Cog):
         await ctx.reply(embed=embed)
 
 
-#========================================================================================================================
-#=========================================================================================================================
-#Error Handling...
-
+#error-handling
     @emote.error
     async def emote_error(self, ctx, error):
         if isinstance(error, commands.BadArgument):
           bad_arg_embed = discord.Embed(title = f"Bad Argument!", description = "```Emote must be in this Server \nusage: -emote <emote_name>```", color = ctx.author.color)
           await ctx.reply(embed = bad_arg_embed)
 
-#========================================================================================================================
-#========================================================================================================================
 
 def setup(client):
     client.add_cog(Information(client))
 
-#========================================================================================================================
-#========================================================================================================================

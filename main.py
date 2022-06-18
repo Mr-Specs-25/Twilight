@@ -6,9 +6,8 @@ from discord.ext import commands
 from datetime import datetime
 from time import time
 
-#========================================================================================================================
-#========================================================================================================================
 
+#setup
 client = discord.Client()
 intents = discord.Intents.all()
 intents.members = True
@@ -16,31 +15,21 @@ intents.presences = True
 
 TOKEN = os.getenv("TOKEN")
 
-intents = discord.Intents.default()
-intents.members = True
 client = commands.Bot(command_prefix = "--", intents = intents)
 client.remove_command("help")
 client.launch_time = datetime.utcnow()
 
-#========================================================================================================================
-#========================================================================================================================
 
-#emotes
-Info       = ("<:RA_Stats:871077269387509831>")
-Utility    = ("<:RA_Utility:871077840349720607>")
-Moderation = ("<:RA_BanHammer:871077232020439090>")
-Games      = ("<:RA_Games:871077302270820424>")
-Bullet     = ("<:RA_Bullet:871077168791294012>")
-X_Mark     = ("<:RA_XMark:871079164554387541>")
+X_Mark = ("<:T_XMark:871079164554387541>")
 
-#========================================================================================================================
-#========================================================================================================================
 
+#status
 @client.event
 async def on_ready():
     await client.change_presence(activity = discord.Game(name = f"--help┃Roaming around Twilight Hangout!"))
     print ("Radon\'s Ready!")
 
+#error-handling
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
@@ -56,9 +45,8 @@ async def on_command_error(ctx, error):
       cooldown_embed.set_footer(text = f"Cooldown!")
       await ctx.send(embed = cooldown_embed, delete_after = 10.0)
 
-#========================================================================================================================
-#========================================================================================================================
 
+#basic
 @client.command()
 async def ping(ctx):
     start = time()
@@ -75,26 +63,16 @@ async def massping(ctx, times : int, member: discord.Member = None):
             await ctx.send(member.mention)
 
 
-#========================================================================================================================
-#========================================================================================================================
 
 
-
-
-
-#========================================================================================================================
-#========================================================================================================================
-
+#load-extensions
 client.load_extension("cogs.information")
 client.load_extension("cogs.moderation")
 client.load_extension("cogs.utility")
+client.load_extention("cogs.events")
 client.load_extension("cogs.eval")
 
-#=======================================================================================================================
-#=======================================================================================================================
 
 client.run(TOKEN)
 
-#=======================================================================================================================
-#=======================================================================================================================
 
