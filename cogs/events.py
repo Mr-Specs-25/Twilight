@@ -15,16 +15,13 @@ class Events(commands.Cog):
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
-            missing_perms_embed = discord.Embed(title = f"{self.X_Mark} Missing Permissions", description = f"You need **{', '.join(error.missing_perms)}** permission to run this command", color = ctx.author.color, timestamp = ctx.message.created_at)
-            missing_perms_embed.set_footer(text = f"Missing Permission!")
+            missing_perms_embed = discord.Embed(title = f"{self.X_Mark} **Missing Permissions!**", description = f"You need `{', '.join(error.missing_perms)}` permission to run this command", color = ctx.author.color, timestamp = ctx.message.created_at)
             await ctx.send(embed = missing_perms_embed, delete_after = 10.0)
         if isinstance(error, commands.MissingRequiredArgument):
-            missing_args_embed = discord.Embed(title = f"{self.X_Mark} Missing Agrument", description = f"You're missing **{error.param}** to run this command", color =  ctx.author.color, timestamp = ctx.message.created_at)
-            missing_args_embed.set_footer(text = f"Bad Argument!")
+            missing_args_embed = discord.Embed(title = f"{self.X_Mark} **Missing Agrument!**", description = f"You're missing `{error.param}` to run this command", color =  ctx.author.color, timestamp = ctx.message.created_at)
             await ctx.send(embed = missing_args_embed, delete_after = 10.0)
         if isinstance(error, commands.CommandOnCooldown):
-            cooldown_embed = discord.Embed(title = f"{self.X_Mark} Command on Cooldown", description = f"You'll be able to run this command after `{round(error.retry_after)} seconds`", color = ctx.author.color, timestamp = ctx.message.created_at)
-            cooldown_embed.set_footer(text = f"Cooldown!")
+            cooldown_embed = discord.Embed(title = f"{self.X_Mark} **Command on Cooldown!**", description = f"You'll be able to run this command after `{round(error.retry_after)} seconds`", color = ctx.author.color, timestamp = ctx.message.created_at)
             await ctx.send(embed = cooldown_embed, delete_after = 10.0)
 
 
@@ -33,16 +30,16 @@ class Events(commands.Cog):
     async def on_member_join(self, member):
         await sleep(60*5)
         for channel in member.guild.channels:
-            if channel.name.startswith("〢🎯Members:"):
-                await channel.edit(name = f"〢🎯Members: {member.guild.member_count}")
+            if channel.name.startswith("🎯〢Members:"):
+                await channel.edit(name = f"🎯〢Members: {member.guild.member_count}")
                 break
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
         await sleep(60*5)
         for channel in member.guild.channels:
-            if channel.name.startswith("〢🎯Members:"):
-                await channel.edit(name = f"〢🎯Members: {member.guild.member_count}")
+            if channel.name.startswith("🎯〢Members:"):
+                await channel.edit(name = f"🎯〢Members: {member.guild.member_count}")
                 break
 
 
