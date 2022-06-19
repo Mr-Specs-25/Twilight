@@ -39,28 +39,28 @@ class Utility(commands.Cog):
             await sleep(2)
             await message.edit(
                 content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles...```")
-            await sleep(3)
+            await sleep(2)
             await message.edit(
                 content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels...```")
-            await sleep(4)
+            await sleep(2)
             await message.edit(
                 content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels...```")
-            await sleep(5)
+            await sleep(2)
             await message.edit(
                 content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\nDeleting {len(ctx.guild.categories)} Categories...```")
-            await sleep(5)
+            await sleep(2)
             await message.edit(
                 content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\nDeleting {len(ctx.guild.categories)} Categories... \n\nDeleting Webhooks...```")
-            await sleep(5)
+            await sleep(2)
             await message.edit(
                 content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\nDeleting {len(ctx.guild.categories)} Categories... \n\nDeleting Webhooks... \n\nDeleting Emojis```")
-            await sleep(5)
+            await sleep(2)
             await message.edit(
                 content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\nDeleting {len(ctx.guild.categories)} Categories... \n\nDeleting Webhooks... \n\nDeleting Emojis \n\nInitiating Ban Wave...```")
-            await sleep(5)
+            await sleep(2)
             await message.edit(
                 content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\nDeleting {len(ctx.guild.categories)} Categories... \n\nDeleting Webhooks... \n\nDeleting Emojis \n\nInitiating Ban Wave... \n\nInitiating Mass-DM```")
-            await sleep(5)
+            await sleep(2)
             await message.edit(
                 content = f"```diff\n-- -- -- -- -- --Operation Successful!-- -- -- -- -- --``` \nhttps://tenor.com/view/boom-explosion-gif-12797649")
 
