@@ -27,19 +27,19 @@ class Events(commands.Cog):
 
 #statistics
     @commands.Cog.listener()
-    async def on_member_join(self, member):
+    async def on_member_join(self, ctx, member):
         await sleep(60*5)
         for channel in member.guild.channels:
             if channel.name.startswith("🎯〢Members:"):
-                await channel.edit(name = f"🎯〢Members: {member.guild.member_count}")
+                await channel.edit(name = f"🎯〢Members: {len(list(filter(lambda m: not m.bot, ctx.guild.members)))}")
                 break
 
     @commands.Cog.listener()
-    async def on_member_remove(self, member):
+    async def on_member_remove(self, ctx, member):
         await sleep(60*5)
         for channel in member.guild.channels:
             if channel.name.startswith("🎯〢Members:"):
-                await channel.edit(name = f"🎯〢Members: {member.guild.member_count}")
+                await channel.edit(name = f"🎯〢Members: {len(list(filter(lambda m: not m.bot, ctx.guild.members)))}")
                 break
 
 
