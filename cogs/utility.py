@@ -23,7 +23,7 @@ class Utility(commands.Cog):
     async def nuke(self, ctx):
         await ctx.message.delete()
         if isinstance(ctx.message.channel, discord.TextChannel):
-            initial = random.randrange(5, 15)
+            initial = random.randrange(15, 25)
             message = await ctx.send(f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete```")
             await sleep(2)
             await message.edit(
