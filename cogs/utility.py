@@ -20,7 +20,7 @@ class Utility(commands.Cog):
 
 #transformer
     @commands.command()
-    async def _1337_speak(self, ctx, *, text=None):
+    async def fancy(self, ctx, *, text=None):
         await ctx.message.delete()
         text = text.replace("a", "4").replace("A", "4").replace("e", "3").replace("E", "3") \
             .replace("i", "!").replace("I", "!").replace("o", "0").replace("O", "0") \
