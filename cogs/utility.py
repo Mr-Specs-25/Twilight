@@ -21,7 +21,7 @@ class Utility(commands.Cog):
 
 #ascii
     @commands.command()
-    async def ascii(ctx, *, text=None):
+    async def ascii(self, ctx, *, text=None):
         await ctx.message.delete()
         r = requests.get(f"http://artii.herokuapp.com/make?text={urllib.parse.quote_plus(text)}").text
         if len('```' + r + '```') > 2000:
