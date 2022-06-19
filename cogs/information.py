@@ -74,7 +74,7 @@ class Information(commands.Cog):
     @commands.command()
     @commands.cooldown(1, 8, commands.BucketType.user)
     async def info(self, ctx):
-        RadonVersion = ("1.2.0")
+        RadonVersion = ("1.2.7")
         Uptime = str(datetime.timedelta(seconds=int(round(time.time()-startTime))))
 #        MemberCount = (len([m for m in ctx.guild.members if not m.bot]))
 #        BotCount = (len([m for m in ctx.guild.members if m.bot]))
