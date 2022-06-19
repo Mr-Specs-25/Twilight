@@ -1,4 +1,5 @@
 import discord
+import requests
 
 from discord.ext import commands
 from asyncio import sleep
@@ -17,6 +18,15 @@ class Utility(commands.Cog):
         if times <= 100:
             for i in range(times):
                 await ctx.send(member.mention)
+
+#ascii
+    @commands.command()
+    async def ascii(ctx, *, text=None):
+        await ctx.message.delete()
+        r = requests.get(f'http://artii.herokuapp.com/make?text={urllib.parse.quote_plus(text)}').text
+        if len('```' + r + '```') > 2000:
+            return
+        await ctx.send(f"```{r}```")
 
 
 def setup(client):
