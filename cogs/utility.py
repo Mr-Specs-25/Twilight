@@ -1,9 +1,9 @@
 import discord
 import requests
+import urllib.parse
 
 from discord.ext import commands
 from asyncio import sleep
-
 
 class Utility(commands.Cog):
     def __init__(self, client):
@@ -23,7 +23,7 @@ class Utility(commands.Cog):
     @commands.command()
     async def ascii(ctx, *, text=None):
         await ctx.message.delete()
-        r = requests.get(f'http://artii.herokuapp.com/make?text={urllib.parse.quote_plus(text)}').text
+        r = requests.get(f"http://artii.herokuapp.com/make?text={urllib.parse.quote_plus(text)}").text
         if len('```' + r + '```') > 2000:
             return
         await ctx.send(f"```{r}```")
