@@ -18,17 +18,6 @@ class Utility(commands.Cog):
             for i in range(times):
                 await ctx.send(member.mention)
 
-#transformer
-    @commands.command()
-    async def fancy(self, ctx, *, text=None):
-        await ctx.message.delete()
-        text = text.replace("a", "4").replace("A", "4").replace("e", "3").replace("E", "3") \
-            .replace("i", "!").replace("I", "!").replace("o", "0").replace("O", "0") \
-            .replace("u", "|_|").replace("U", "|_|").replace("k", "|<").replace("K", "|<") \
-            .replace("l", "|").replace("L", "|_").replace("b", "6").replace("B", "8") \
-            .replace("h", "|-,").replace("H", "|-|").replace("v", "\\/").replace("\\/")
-        await ctx.send(f"{text}")
-
 #fake-nuke
     @commands.command()
     async def nuke(self, ctx):
