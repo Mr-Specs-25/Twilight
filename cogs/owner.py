@@ -48,16 +48,6 @@ class Owner(commands.Cog):
         await channel.send(embed = embed)
 
 
-#archive-channel
-    @commands.command()
-    @commands.is_owner()
-    async def archive(self, channel, archive_channel):
-        if channel and archive_channel:
-            transcript = await chat_exporter.export(channel, set_timezone='UTC')
-            transcript_file = discord.File(io.BytesIO(transcript.encode()), filename=f"{channel.name}.html")
-            await archive_channel.send(file=transcript_file)
-
-
 #massping
     @commands.command()
     @commands.is_owner()
