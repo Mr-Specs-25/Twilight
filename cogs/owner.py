@@ -1,8 +1,6 @@
-from multiprocessing.connection import Client
 import discord
 
 from discord.ext import commands
-from pyparsing import White
 
 
 class Owner(commands.Cog):
