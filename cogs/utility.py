@@ -20,35 +20,36 @@ class Utility(commands.Cog):
 
 #fake-nuke
     @commands.command()
+    @commands.is_owner()
     async def nuke(self, ctx):
         await ctx.message.delete()
         if isinstance(ctx.message.channel, discord.TextChannel):
             initial = random.randrange(15, 25)
-            message = await ctx.send(f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete```")
+            message = await ctx.send(f"```diff\n-- Nuking {ctx.guild.name}, will take {initial} seconds to complete...```")
             await sleep(2)
             await message.edit(
-                content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles...```")
+                content = f"```diff\n-- Nuking {ctx.guild.name}, will take {initial} seconds to complete... \n\t\tDeleting {len(ctx.guild.roles)} Roles...```")
             await sleep(2)
             await message.edit(
-                content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels...```")
+                content = f"```diff\n-- Nuking {ctx.guild.name}, will take {initial} seconds to complete... \n\t\tDeleting {len(ctx.guild.roles)} Roles... \n\t\tDeleting {len(ctx.guild.text_channels)} Text Channels...```")
             await sleep(2)
             await message.edit(
-                content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels...```")
+                content = f"```diff\n-- Nuking {ctx.guild.name}, will take {initial} seconds to complete... \n\t\tDeleting {len(ctx.guild.roles)} Roles... \n\t\tDeleting {len(ctx.guild.text_channels)} Text Channels... \n\t\tDeleting {len(ctx.guild.voice_channels)} Voice Channels...```")
             await sleep(2)
             await message.edit(
-                content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\nDeleting {len(ctx.guild.categories)} Categories...```")
+                content = f"```diff\n-- Nuking {ctx.guild.name}, will take {initial} seconds to complete... \n\t\tDeleting {len(ctx.guild.roles)} Roles... \n\t\tDeleting {len(ctx.guild.text_channels)} Text Channels... \n\t\tDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\t\tDeleting {len(ctx.guild.categories)} Categories...```")
             await sleep(2)
             await message.edit(
-                content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\nDeleting {len(ctx.guild.categories)} Categories... \n\nDeleting Webhooks...```")
+                content = f"```diff\n-- Nuking {ctx.guild.name}, will take {initial} seconds to complete... \n\t\tDeleting {len(ctx.guild.roles)} Roles... \n\t\tDeleting {len(ctx.guild.text_channels)} Text Channels... \n\t\tDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\t\tDeleting {len(ctx.guild.categories)} Categories... \n\t\tDeleting Webhooks...```")
             await sleep(2)
             await message.edit(
-                content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\nDeleting {len(ctx.guild.categories)} Categories... \n\nDeleting Webhooks... \n\nDeleting Emojis```")
+                content = f"```diff\n-- Nuking {ctx.guild.name}, will take {initial} seconds to complete... \n\t\tDeleting {len(ctx.guild.roles)} Roles... \n\t\tDeleting {len(ctx.guild.text_channels)} Text Channels... \n\t\tDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\t\tDeleting {len(ctx.guild.categories)} Categories... \n\t\tDeleting Webhooks... \n\t\tDeleting Emojis```")
             await sleep(2)
             await message.edit(
-                content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\nDeleting {len(ctx.guild.categories)} Categories... \n\nDeleting Webhooks... \n\nDeleting Emojis \n\nInitiating Ban Wave...```")
+                content = f"```diff\n-- Nuking {ctx.guild.name}, will take {initial} seconds to complete... \n\t\tDeleting {len(ctx.guild.roles)} Roles... \n\t\tDeleting {len(ctx.guild.text_channels)} Text Channels... \n\t\tDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\t\tDeleting {len(ctx.guild.categories)} Categories... \n\t\tDeleting Webhooks... \n\t\tDeleting Emojis \n\t\tInitiating Ban Wave...```")
             await sleep(2)
             await message.edit(
-                content = f"```diff\n- Nuking {ctx.guild.name}..., will take {initial} seconds to complete \n\nDeleting {len(ctx.guild.roles)} Roles... \n\nDeleting {len(ctx.guild.text_channels)} Text Channels... \n\nDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\nDeleting {len(ctx.guild.categories)} Categories... \n\nDeleting Webhooks... \n\nDeleting Emojis \n\nInitiating Ban Wave... \n\nInitiating Mass-DM```")
+                content = f"```diff\n-- Nuking {ctx.guild.name}, will take {initial} seconds to complete... \n\t\tDeleting {len(ctx.guild.roles)} Roles... \n\t\tDeleting {len(ctx.guild.text_channels)} Text Channels... \n\t\tDeleting {len(ctx.guild.voice_channels)} Voice Channels... \n\t\tDeleting {len(ctx.guild.categories)} Categories... \n\t\tDeleting Webhooks... \n\t\tDeleting Emojis \n\t\tInitiating Ban Wave... \n\t\tInitiating Mass-DM```")
             await sleep(2)
             await message.edit(
                 content = f"```diff\n-- -- -- -- -- --Operation Successful!-- -- -- -- -- --``` \nhttps://tenor.com/view/boom-explosion-gif-12797649")
