@@ -1,4 +1,6 @@
 import discord
+import chat_exporter
+import io
 
 from discord.ext import commands
 
@@ -44,6 +46,16 @@ class Owner(commands.Cog):
         embed.set_author(name = "Extension reloaded", icon_url = self.client.user.avatar_url)
         await ctx.send(f"```py\n Successfully reloaded \"{extension}.py\"```", delete_after = 5.0)
         await channel.send(embed = embed)
+
+
+#archive-channel
+    @commands.command()
+    @commands.is_owner()
+    async def archive(self, channel, archive_channel):
+        if channel and archive_channel:
+            transcript = await chat_exporter.export(channel, set_timezone='UTC')
+            transcript_file = discord.File(io.BytesIO(transcript.encode()), filename=f"{channel.name}.html")
+            await archive_channel.send(file=transcript_file)
 
 
 #massping
