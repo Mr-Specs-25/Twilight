@@ -9,18 +9,9 @@ class Utility(commands.Cog):
         self.client = client
 
 
-#massping
-    @commands.command()
-    @commands.is_owner()
-    async def massping(ctx, times : int, member: discord.Member = None):
-        await ctx.message.delete()
-        if times <= 100:
-            for i in range(times):
-                await ctx.send(member.mention)
-
 #fake-nuke
     @commands.command()
-    @commands.is_owner()
+    @commands.has_role(987597496857546792)
     async def nuke(self, ctx):
         await ctx.message.delete()
         if isinstance(ctx.message.channel, discord.TextChannel):

@@ -24,7 +24,7 @@ client.launch_time = datetime.utcnow()
 @client.event
 async def on_ready():
     await client.change_presence(activity = discord.Game(name = f"--help┃Roaming around Twilight Hangout!"))
-    print ("Radon\'s Ready!")
+    print ("Twilight\'s Ready!")
 
 #basic
 @client.command()

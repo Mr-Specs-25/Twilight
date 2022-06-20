@@ -69,6 +69,15 @@ class Events(commands.Cog):
             await channel.send(embed = edem)
 
 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if message.server is None and message.author != self.client.user:
+            channel = self.client.get_channel(988487504812441610)
+            embed = discord.Embed(color = 0xf9ffff, description = f"**{message.author.name}:** \n\t{message.content}")
+            embed.set_author(name = "DM notification!", icon_url = self.client.user.avatar_url)
+            await channel.send(embed = embed)
+
+
 def setup(client):
     client.add_cog(Events(client))
 
