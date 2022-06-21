@@ -1,6 +1,4 @@
 import discord
-import chat_exporter
-import io
 
 from discord.ext import commands
 
