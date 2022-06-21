@@ -177,11 +177,6 @@ class Information(commands.Cog):
     @commands.guild_only()
     @commands.cooldown(1, 10, commands.BucketType.user)
     async def emote(self, ctx, emoji: discord.Emoji = None):
-        try:
-            emoji = await emoji.guild.fetch_emoji(emoji.id)
-        except discord.NotFound:
-            return await ctx.send("**I couldn't find this emote in this guild.**")
-
         is_animated = "Yes" if emoji.animated else "No"
         is_animated2 = "a" if emoji.animated else ""
         creation_time = emoji.created_at.strftime("%I:%M %p %B %d, %Y")

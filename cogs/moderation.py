@@ -57,29 +57,6 @@ class Mdoeration(commands.Cog):
           await ctx.send(f"***Successfully purged! `[{num_messages}]`***", delete_after = 5.0)
 
 
-#error-handling
-    @swipe.error
-    async def swipe_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
-          bad_arg_embed = discord.Embed(title = f"Bad Argument!", description = "usage: -swipe <+ve int>", color = ctx.author.color)
-          await ctx.reply(embed = bad_arg_embed)
-
-    @until.error
-    async def until_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
-          bad_arg_embed = discord.Embed(title = f"Bad Argument!", description = "usage: -swipe until <msg_id>", color = ctx.author.color)
-          await ctx.reply(embed = bad_arg_embed)
-
-    @user.error
-    async def user_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
-          bad_arg_embed = discord.Embed(title = f"Bad Argument!", description = "usage: -swipe user <user> [+ve int]", color = ctx.author.color)
-          await ctx.send(embed = bad_arg_embed)
-        if isinstance(error, commands.MissingRequiredArgument):
-          bad_arg_embed = discord.Embed(title = f"Missing Argument!", description = "usage: -swipe user <user> [+ve int]", color = ctx.author.color)
-          await ctx.send(embed = bad_arg_embed)
-
-
 def setup(client):
     client.add_cog(Mdoeration(client))
 
