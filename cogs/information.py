@@ -54,7 +54,7 @@ class Information(commands.Cog):
         hembed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         await ctx.reply(embed = hembed)
 
-#help-purge
+#help-swipe
     @help.command(aliases = ["purge"])
     @commands.guild_only()
     @commands.cooldown(1, 8, commands.BucketType.user)
@@ -72,7 +72,7 @@ class Information(commands.Cog):
         startTime = time.time()
 
     @commands.command()
-    @commands.cooldown(1, 8, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     async def info(self, ctx):
         RadonVersion = ("1.2.7")
         Uptime = str(datetime.timedelta(seconds=int(round(time.time()-startTime))))
@@ -85,12 +85,12 @@ class Information(commands.Cog):
 
 #user
     @commands.group(invoke_without_command = True, aliases = ["account"], case_insensitive = True)
-    @commands.cooldown(1, 8, commands.BucketType.user)
-    async def user(self, ctx, member : discord.Member = None):
+    @commands.cooldown(1, 10, commands.BucketType.user)
+    async def user(self, ctx, member: discord.Member = None):
         member = ctx.author if not member else member
         roles = [role for role in member.roles]
-        uiembed = discord.Embed(tile = "", description = "```yaml\nSubCommands: avatar```", color = ctx.author.color, timestamp = ctx.message.created_at)
-        uiembed.set_author(name = "User Information", url = "", icon_url = self.client.user.avatar_url)
+        uiembed = discord.Embed(description = "```yaml\nSubCommands: avatar```", color = ctx.author.color, timestamp = ctx.message.created_at)
+        uiembed.set_author(name = "User Information", icon_url = self.client.user.avatar_url)
         uiembed.set_thumbnail(url = member.avatar_url)
         uiembed.add_field(name = f"{self.Bullet} General Info:", value = f"```User Name: {member.name} \nUser Nikname: {member.nick} \nUser ID: {member.id}```", inline = True)
         uiembed.add_field(name = f"{self.Bullet} Account Creation:", value = member.created_at.strftime("```%a, %#d %B %Y, %I:%M %p (Coordinated Universal Time)```"), inline = False)
@@ -103,10 +103,10 @@ class Information(commands.Cog):
 #user-avatar
     @user.command(aliases = ["av"])
     @commands.guild_only()
-    @commands.cooldown(1, 8, commands.BucketType.user) 
-    async def avatar(self, ctx, member : discord.Member = None):
+    @commands.cooldown(1, 10, commands.BucketType.user) 
+    async def avatar(self, ctx, member: discord.Member = None):
         member = ctx.author if not member else member
-        aembed = discord.Embed(title = ":frame_photo: Profile Picture", description = f'{member.mention} \n[Avatar URL]({ctx.author.avatar_url})', color = ctx.author.color, timestamp = ctx.message.created_at)
+        aembed = discord.Embed(title = "Profile Picture", description = f'{member.mention} \n[Avatar URL]({ctx.author.avatar_url})', color = ctx.author.color, timestamp = ctx.message.created_at)
         aembed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         aembed.set_image(url = member.avatar_url)
         await ctx.reply(embed = aembed)
@@ -114,30 +114,30 @@ class Information(commands.Cog):
 
 #server
     @commands.group(invoke_without_command = True, aliases = ["guild"], case_insensitive = True)
-    @commands.cooldown(1, 8, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     async def server(self, ctx, guild: discord.Guild = None):
 #        guild = ctx.message.guild
 #        statuses = [len(list(filter(lambda m: str(m.status) == 'online', ctx.guild.members))),
 #                    len(list(filter(lambda m: str(m.status) == 'idle', ctx.guild.members))),
 #                    len(list(filter(lambda m: str(m.status) == 'dnd', ctx.guild.members))),
 #                    len(list(filter(lambda m: str(m.status) == 'invisible', ctx.guild.members)))]
-        sembed = discord.Embed(title = '', description = '```yaml\nSubCommands: icon```', color = ctx.author.color, timestamp = ctx.message.created_at)
+        sembed = discord.Embed(description = "```yaml\nSubCommands: icon```", color = ctx.author.color, timestamp = ctx.message.created_at)
         sembed.set_thumbnail(url = ctx.guild.icon_url)
-        sembed.set_author(name = 'Server Information', url = '', icon_url = self.client.user.avatar_url)
-        sembed.add_field(name = f'{self.Bullet} General Info:', value = f'```Server ID: {ctx.guild.id} \nServer Region: {ctx.guild.region} \nServer Owner: {ctx.guild.owner} [{ctx.guild.owner_id}] \nServer Roles: {len(ctx.guild.roles)} \nVerification Level: {ctx.guild.verification_level}```', inline = False)
-        sembed.add_field(name = f'{self.Bullet} Channel Info:', value = f'```Total Categories: {len(ctx.guild.categories)} \nTotal Channels: {len(ctx.guild.channels)} \nText Channels: {len(ctx.guild.text_channels)} \nVoice Channels: {len(ctx.guild.voice_channels)}```', inline = True)
-        sembed.add_field(name = f'{self.Bullet} Member Info:', value = f'```Total Members: {ctx.guild.member_count} \nTotal Humans: {len(list(filter(lambda m: not m.bot, ctx.guild.members)))} \nTotal Bots: {len(list(filter(lambda m: m.bot, ctx.guild.members)))} \nBanned Members: {len(await ctx.guild.bans())}```', inline = True)
-        sembed.add_field(name = f'{self.Bullet} Boost Info:', value = f'```Server Boosts: {ctx.guild.premium_subscription_count} \nServer Boost Tier: {ctx.guild.premium_tier} \nServer Booster Role: {ctx.guild.premium_subscriber_role}```', inline = False)
-        sembed.add_field(name = f'{self.Bullet} Server Creation:', value = ctx.guild.created_at.strftime('```%a, %#d %B %Y, %I:%M %p (Coordinated Universal Time)```'), inline = False)
+        sembed.set_author(name = "Server Information", icon_url = self.client.user.avatar_url)
+        sembed.add_field(name = f"{self.Bullet} General Info:", value = f"```Server ID: {ctx.guild.id} \nServer Region: {ctx.guild.region} \nServer Owner: {ctx.guild.owner} [{ctx.guild.owner_id}] \nServer Roles: {len(ctx.guild.roles)} \nVerification Level: {ctx.guild.verification_level}```", inline = False)
+        sembed.add_field(name = f"{self.Bullet} Channel Info:", value = f"```Total Categories: {len(ctx.guild.categories)} \nTotal Channels: {len(ctx.guild.channels)} \nText Channels: {len(ctx.guild.text_channels)} \nVoice Channels: {len(ctx.guild.voice_channels)}```", inline = True)
+        sembed.add_field(name = f"{self.Bullet} Member Info:", value = f"```Total Members: {ctx.guild.member_count} \nTotal Humans: {len(list(filter(lambda m: not m.bot, ctx.guild.members)))} \nTotal Bots: {len(list(filter(lambda m: m.bot, ctx.guild.members)))} \nBanned Members: {len(await ctx.guild.bans())}```", inline = True)
+        sembed.add_field(name = f"{self.Bullet} Boost Info:", value = f"```Server Boosts: {ctx.guild.premium_subscription_count} \nServer Boost Tier: {ctx.guild.premium_tier} \nServer Booster Role: {ctx.guild.premium_subscriber_role}```", inline = False)
+        sembed.add_field(name = f"{self.Bullet} Server Creation:", value = ctx.guild.created_at.strftime('```%a, %#d %B %Y, %I:%M %p (Coordinated Universal Time)```'), inline = False)
         sembed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         await ctx.reply(embed = sembed)
 
 #server-icon
     @server.command()
     @commands.guild_only()
-    @commands.cooldown(1, 8, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     async def icon(self, ctx):
-        aembed = discord.Embed(title = ":frame_photo: Server Icon", description = f'**{ctx.guild}** \n[Server Icon URL]({ctx.guild.icon_url})', color = ctx.author.color, timestamp = ctx.message.created_at)
+        aembed = discord.Embed(title = "Server Icon", description = f"**{ctx.guild}** \n[Server Icon URL]({ctx.guild.icon_url})", color = ctx.author.color, timestamp = ctx.message.created_at)
         aembed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         aembed.set_image(url = ctx.guild.icon_url)
         await ctx.reply(embed = aembed)
@@ -146,15 +146,15 @@ class Information(commands.Cog):
 #check
     @commands.group(invoke_without_command = True, aliases = ["inspect"], case_insensitive = True)
     async def check(self, ctx):
-      chem = discord.Embed(title = "", description = "```SubCommands: invite, emote  \n\nUsage: \n\tinvite: check invite <invite_link> \n\temote: check emote <emote>```", color = ctx.author.color, timestamp = ctx.message.created_at)
-      chem.set_author(name = f"Check Command", url = '', icon_url = self.client.user.avatar_url)
+      chem = discord.Embed(description = "```SubCommands: invite, emote  \n\nUsage: \n\t--invite: check invite [invite_link] \n\t--emote: check emote [emote]```", color = ctx.author.color, timestamp = ctx.message.created_at)
+      chem.set_author(name = f"Check Command", icon_url = self.client.user.avatar_url)
       chem.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
       await ctx.reply(embed = chem, delete_after = 10.0)
 
 #check-invite
     @check.command()
     @commands.guild_only()
-    @commands.cooldown(1, 8, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     async def invite(self, ctx, invite: discord.Invite):
       Inviter = invite.inviter if invite.inviter else "Unknown"
       InviterID = invite.inviter.id
@@ -175,12 +175,12 @@ class Information(commands.Cog):
 #check-emote
     @check.command(aliases = ["emoji"])
     @commands.guild_only()
-    @commands.cooldown(1, 8, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     async def emote(self, ctx, emoji: discord.Emoji = None):
         try:
             emoji = await emoji.guild.fetch_emoji(emoji.id)
         except discord.NotFound:
-            return await ctx.send("> **I couldn't find this emote in this guild.**")
+            return await ctx.send("**I couldn't find this emote in this guild.**")
 
         is_animated = "Yes" if emoji.animated else "No"
         is_animated2 = "a" if emoji.animated else ""
@@ -201,14 +201,6 @@ class Information(commands.Cog):
         embed.set_thumbnail(url=emoji.url)
         embed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         await ctx.reply(embed=embed)
-
-
-#error-handling
-    @emote.error
-    async def emote_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
-          bad_arg_embed = discord.Embed(title = f"Bad Argument!", description = "```Emote must be in this Server \nusage: -emote <emote_name>```", color = ctx.author.color)
-          await ctx.reply(embed = bad_arg_embed)
 
 
 def setup(client):

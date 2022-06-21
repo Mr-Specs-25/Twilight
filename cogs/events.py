@@ -18,8 +18,11 @@ class Events(commands.Cog):
             missing_perms_embed = discord.Embed(title = f"{self.X_Mark} **Missing Permissions!**", description = f"You need `{', '.join(error.missing_perms)}` permission to run this command", color = ctx.author.color, timestamp = ctx.message.created_at)
             await ctx.send(embed = missing_perms_embed, delete_after = 10.0)
         if isinstance(error, commands.MissingRequiredArgument):
-            missing_args_embed = discord.Embed(title = f"{self.X_Mark} **Missing Agrument!**", description = f"You are missing the required `parameter[{error.param}]` to run this command", color =  ctx.author.color, timestamp = ctx.message.created_at)
+            missing_args_embed = discord.Embed(title = f"{self.X_Mark} **Missing Agrument!**", description = f"You are missing the required `parameters[{error.param}]` to run this command", color =  ctx.author.color, timestamp = ctx.message.created_at)
             await ctx.send(embed = missing_args_embed, delete_after = 10.0)
+        if isinstance(error, commands.BadArgument):
+            bad_args_embed = discord.Embed(title = f"{self.X_Mark} Invalid Argument!", description = f"Parameters provided are invalid, `{error.args}`.")
+            await ctx.send(embed = bad_args_embed, delete_after = 10.0)
         if isinstance(error, commands.CommandOnCooldown):
             cooldown_embed = discord.Embed(title = f"{self.X_Mark} **Command on Cooldown!**", description = f"You will be able to run this command after `{round(error.retry_after)} seconds`", color = ctx.author.color, timestamp = ctx.message.created_at)
             await ctx.send(embed = cooldown_embed, delete_after = 10.0)
