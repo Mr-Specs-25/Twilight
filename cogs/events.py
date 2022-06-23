@@ -34,7 +34,7 @@ class Events(commands.Cog):
         await sleep(60*5)
         for channel in member.guild.channels:
             if channel.name.startswith("🎯〢Members:"):
-                await channel.edit(name = f"🎯〢Members: {len(list(filter(lambda m: not m.bot, ctx.guild.members)))}")
+                await channel.edit(name = f"🎯〢Members: {ctx.guild.member_count}")
                 break
 
     @commands.Cog.listener()
@@ -42,7 +42,7 @@ class Events(commands.Cog):
         await sleep(60*5)
         for channel in member.guild.channels:
             if channel.name.startswith("🎯〢Members:"):
-                await channel.edit(name = f"🎯〢Members: {len(list(filter(lambda m: not m.bot, ctx.guild.members)))}")
+                await channel.edit(name = f"🎯〢Members: {ctx.guild.member_count}")
                 break
 
 
