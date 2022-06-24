@@ -1,11 +1,9 @@
 import discord
 import os
-import nltk
 
 from discord.ext import commands
 from datetime import datetime
 from time import time
-from neuralintents import GenericAssistant
 
 
 #setup
@@ -28,17 +26,7 @@ async def on_ready():
     print ("Twilight\'s Ready!")
 
 
-#ai
-ai = GenericAssistant("intents.json")
-ai.train_model()
-ai.save_model()
-@client.event()
-async def on_message(message):
-    if client.user == message.author:
-            return
-    if client.user.mentioned_in(message):
-        response = ai.request(message.content)
-        await message.channel.send(response, reference = message)
+
 
 
 #basic
