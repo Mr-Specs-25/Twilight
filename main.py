@@ -1,5 +1,6 @@
 import discord
 import os
+import nltk
 
 from discord.ext import commands
 from datetime import datetime
