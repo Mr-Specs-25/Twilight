@@ -8,8 +8,8 @@
       "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"]
     },
     {"tag": "developer",
-      "patterns": ["who developed you?", "who is your master", ""],
-      "responses": [""]
+      "patterns": ["who developed you?", "who is your master?"],
+      "responses": ["I was developed by my master, Walter", "I was created by Walter"]
     }
   ]
   }

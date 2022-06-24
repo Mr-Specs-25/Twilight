@@ -1,3 +1,4 @@
+import json
 import discord
 from neuralintents import GenericAssistant
 
@@ -7,7 +8,7 @@ class Utility(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    ai = GenericAssistant("intents.json")
+    ai = GenericAssistant("Twilight\data\intents.json")
     ai.train_model()
     ai.save_model()
 
