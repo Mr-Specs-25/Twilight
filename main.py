@@ -2,9 +2,9 @@ import discord
 import os
 
 from discord.ext import commands
-
 from datetime import datetime
 from time import time
+from neuralintents import GenericAssistant
 
 
 #setup
@@ -25,6 +25,20 @@ client.launch_time = datetime.utcnow()
 async def on_ready():
     await client.change_presence(activity = discord.Game(name = f"--help┃Roaming around Twilight Hangout!"))
     print ("Twilight\'s Ready!")
+
+
+#ai
+ai = GenericAssistant("intents.json")
+ai.train_model()
+ai.save_model()
+@client.event()
+async def on_message(message):
+    if client.user == message.author:
+            return
+    if client.user.mentioned_in(message):
+        response = ai.request(message.content)
+        await message.channel.send(response, reference = message)
+
 
 #basic
 @client.command()
