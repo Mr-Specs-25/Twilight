@@ -7,7 +7,7 @@ class Utility(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    ai = GenericAssistant("data\intents.json")
+    ai = GenericAssistant("intents.json")
     ai.train_model()
     ai.save_model()
 

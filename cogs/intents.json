@@ -1,0 +1,15 @@
+{"intents": [
+    {"tag": "greeting",
+      "patterns": ["hi", "how are you?", "is anyone there?", "hello", "good day", "whats up", "hey"],
+      "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"]
+    },
+    {"tag": "goodbye",
+      "patterns": ["see you later", "goodbye", "i am leaving", "have a Good day", "bye", "cya", "see ya"],
+      "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"]
+    },
+    {"tag": "developer",
+      "patterns": ["who developed you?", "who is your master", ""],
+      "responses": [""]
+    }
+  ]
+  }
